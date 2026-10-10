@@ -12,13 +12,13 @@
 
 <br />
 
-EcoTrack is a modern, responsive web application designed to help individuals and enterprises track, understand, and reduce their carbon footprint. Powered by state-of-the-art Agentic AI, it provides intelligent data extraction, real-time web search capabilities, and actionable sustainability insights.
+EcoTrack is a modern, responsive web application designed to help individuals and enterprises track, understand, and reduce their carbon footprint. Powered by state-of-the-art AI, it provides intelligent data extraction and actionable sustainability insights.
 
 ---
 
 ## ✨ Key Features
 
-- **🤖 Agentic AI Assistant**: A built-in intelligent chatbot powered by **Groq (`qwen/qwen3.8-27b`)** and **SerpAPI**. It doesn't just chat—it can actively browse the live web to fetch real-time climate data, policies, and offset prices to answer your questions.
+- **🤖 AI Assistant**: A built-in intelligent chatbot powered by **Groq (`qwen/qwen3.8-27b`)** to answer all your sustainability questions.
 - **📄 Smart Bill & Receipt Scanner**: Seamlessly upload images or paste raw text from electricity bills, flight itineraries, or grocery receipts. Using **Tesseract.js** for client-side OCR and Groq's blazing-fast JSON mode, EcoTrack automatically extracts, categorizes, and logs the precise carbon footprint of your activities.
 - **📊 Enterprise Sustainability Dashboard**: A sleek, professional interface built with Tailwind CSS v4, featuring a dynamic "Sustainability Index", beautiful data visualizations, and glassmorphic design elements.
 - **⚡ "What If" Simulator**: Interactive scenarios that let you project the long-term impact of adopting greener habits (e.g., switching to an EV, adopting a plant-based diet).
@@ -30,7 +30,6 @@ EcoTrack is a modern, responsive web application designed to help individuals an
 - **Styling**: Tailwind CSS v4 (Custom Enterprise SaaS Theme)
 - **AI & Logic**: 
   - **Groq SDK**: High-speed LLM inference
-  - **SerpAPI**: Agentic tool calling for real-time web search
   - **Tesseract.js**: Client-side Optical Character Recognition (OCR)
 - **Icons**: Lucide React
 - **Deployment**: Vercel
@@ -57,7 +56,6 @@ cp .env.example .env
 ```
 Open `.env` and configure your API keys:
 - `VITE_GROQ_API_KEY`: Get it from [Groq Console](https://console.groq.com/)
-- `VITE_SERPAPI_API_KEY`: Get it from [SerpAPI](https://serpapi.com/)
 
 ### 4. Run the Development Server
 ```bash

@@ -7,37 +7,6 @@ const groq = new Groq({
   dangerouslyAllowBrowser: true,
 });
 
-const SERPAPI_KEY = import.meta.env.VITE_SERPAPI_API_KEY;
-
-/**
- * Tool execution function for SerpAPI
- * Searches Google and returns organic results as a string
- */
-async function searchWeb(query) {
-  if (!SERPAPI_KEY) {
-    console.warn("SerpAPI key is missing.");
-    return "Error: SerpAPI key missing in .env";
-  }
-  
-  const url = `https://serpapi.com/search.json?q=${encodeURIComponent(query)}&api_key=${SERPAPI_KEY}`;
-  try {
-    const res = await fetch(url);
-    const data = await res.json();
-    
-    if (data.organic_results && data.organic_results.length > 0) {
-      // Return top 4 results for the model to read
-      return data.organic_results
-        .slice(0, 4)
-        .map(r => `Title: ${r.title}\nSnippet: ${r.snippet}\nLink: ${r.link}`)
-        .join('\n\n');
-    }
-    return "No relevant results found on Google.";
-  } catch (error) {
-    console.error("SerpAPI search failed:", error);
-    return "Search failed due to a network or API error.";
-  }
-}
-
 /**
  * Generates dynamic recommendations based on user's recent activities using Groq Llama 3
  */
@@ -89,7 +58,7 @@ export async function getSimulatorInsight(title, savings, yearlySavings) {
 }
 
 /**
- * Agentic Chatbot Engine using Groq (Llama 3.3) + SerpAPI (Tool Calling)
+ * Agentic Chatbot Engine using Groq (Llama 3.3)
  */
 export async function sendChatMessage(message, chatHistory = [], activities = []) {
   if (!import.meta.env.VITE_GROQ_API_KEY) {
@@ -106,79 +75,20 @@ export async function sendChatMessage(message, chatHistory = [], activities = []
   const systemPrompt = {
     role: "system",
     content: `You are EcoBot, an expert sustainability, environmental science, and carbon-tracking assistant. 
-You are an Agentic AI with access to a Google Search tool. 
-- ALWAYS use the 'search_web' tool if the user asks for real-time facts, current news, latest policies, prices, or recent data.
 - Keep responses concise, friendly, and well-formatted using markdown.
 - The user's recent logged activities for context: ${JSON.stringify(activities)}`
   };
 
   messages.unshift(systemPrompt);
 
-  // 3. Define the Tool for Groq
-  const tools = [
-    {
-      type: "function",
-      function: {
-        name: "search_web",
-        description: "Search Google for real-time information, news, policies, or current facts.",
-        parameters: {
-          type: "object",
-          properties: {
-            query: {
-              type: "string",
-              description: "The search query to send to Google."
-            }
-          },
-          required: ["query"],
-        },
-      },
-    }
-  ];
-
   try {
-    // 4. Initial call to the model
+    // 3. Call the model
     const response = await groq.chat.completions.create({
       model: "qwen/qwen3.8-27b",
       messages: messages,
-      tools: tools,
-      tool_choice: "auto",
     });
 
-    const responseMessage = response.choices[0].message;
-
-    // 5. Check if the model wants to call a tool
-    if (responseMessage.tool_calls) {
-      messages.push(responseMessage);
-      
-      // Execute each tool call requested
-      for (const toolCall of responseMessage.tool_calls) {
-        if (toolCall.function.name === "search_web") {
-          const args = JSON.parse(toolCall.function.arguments);
-          console.log(`🔍 AI triggered web search: "${args.query}"`);
-          
-          const searchResult = await searchWeb(args.query);
-          
-          // Feed the tool result back to the model
-          messages.push({
-            role: "tool",
-            tool_call_id: toolCall.id,
-            name: toolCall.function.name,
-            content: searchResult,
-          });
-        }
-      }
-
-      // 6. Get the final response from the model after it reads the tool output
-      const secondResponse = await groq.chat.completions.create({
-        model: "qwen/qwen3.8-27b",
-        messages: messages,
-      });
-      
-      return secondResponse.choices[0].message.content;
-    }
-
-    // 7. If no tool was called, just return the text
-    return responseMessage.content;
+    return response.choices[0].message.content;
     
   } catch (error) {
     console.error("Groq Chat Error:", error);
