@@ -1,7 +1,6 @@
 <div align="center">
-  <img src="public/favicon.svg" alt="EcoTrack Logo" width="80" height="80" />
   
-  # EcoTrack
+  # 🌿 EcoTrack
   
   **An AI-powered Enterprise Sustainability & Carbon Tracking Platform.**
 
