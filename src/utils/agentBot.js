@@ -3,7 +3,7 @@ import Groq from 'groq-sdk';
 // Initialize Groq SDK
 // dangerouslyAllowBrowser is required when calling directly from Vite frontend.
 const groq = new Groq({
-  apiKey: import.meta.env.VITE_GROQ_API_KEY,
+  apiKey: import.meta.env.VITE_GROQ_API_KEY || "dummy_key_to_prevent_crash",
   dangerouslyAllowBrowser: true,
 });
 
