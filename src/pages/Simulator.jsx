@@ -15,7 +15,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '../store/AppContext';
 import { EMISSION_FACTORS } from '../utils/carbonCalculator';
-import { getSimulatorInsight } from '../utils/offlineBot';
+import { getSimulatorInsight } from '../utils/agentBot';
 import Layout from '../components/Layout';
 import SimulatorCard from '../components/SimulatorCard';
 

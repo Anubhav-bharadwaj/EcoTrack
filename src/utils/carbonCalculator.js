@@ -115,12 +115,12 @@ export function calculateEcoScore(activities, completedChallenges = 0) {
  * @returns {{ label: string, emoji: string, color: string }}
  */
 export function getEcoTier(score) {
-  if (score >= 90) return { label: 'Eco Legend', emoji: '🌍', color: '#059669' };
-  if (score >= 75) return { label: 'Green Hero', emoji: '🌱', color: '#10b981' };
-  if (score >= 60) return { label: 'Earth Ally', emoji: '🌿', color: '#34d399' };
-  if (score >= 45) return { label: 'Rising Star', emoji: '⭐', color: '#fbbf24' };
-  if (score >= 30) return { label: 'Beginner', emoji: '🌤️', color: '#f59e0b' };
-  return { label: 'Needs Work', emoji: '⚠️', color: '#ef4444' };
+  if (score >= 90) return { label: 'Optimal Efficiency', emoji: '✅', color: '#059669' };
+  if (score >= 75) return { label: 'High Efficiency', emoji: '📈', color: '#10b981' };
+  if (score >= 60) return { label: 'Standard', emoji: '📊', color: '#34d399' };
+  if (score >= 45) return { label: 'Below Target', emoji: '⚠️', color: '#fbbf24' };
+  if (score >= 30) return { label: 'Low Efficiency', emoji: '📉', color: '#f59e0b' };
+  return { label: 'Critical Review', emoji: '🛑', color: '#ef4444' };
 }
 
 /**

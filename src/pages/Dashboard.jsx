@@ -9,7 +9,7 @@ import {
   getCategoryBreakdown,
   getWeeklyData,
 } from '../utils/carbonCalculator';
-import { getRecommendations } from '../utils/offlineBot';
+import { getRecommendations } from '../utils/agentBot';
 import Layout from '../components/Layout';
 import EcoScoreGauge from '../components/EcoScoreGauge';
 import CategoryChart from '../components/CategoryChart';

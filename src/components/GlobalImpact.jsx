@@ -44,7 +44,7 @@ const STAT_CARDS = [
   },
   {
     key: 'challenges',
-    label: 'Challenges Done',
+    label: 'Goals Met',
     unit: '',
     icon: CheckCircle,
     color: 'text-blue-500',

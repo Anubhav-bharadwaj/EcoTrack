@@ -3,6 +3,7 @@ import { ClipboardList, Filter, Calendar, Leaf, TrendingDown, Lightbulb, Plus } 
 import { useApp } from '../store/AppContext';
 import Layout from '../components/Layout';
 import ActivityForm from '../components/ActivityForm';
+import SmartScanner from '../components/SmartScanner';
 import ActivityCard from '../components/ActivityCard';
 
 const FILTER_OPTIONS = [
@@ -102,6 +103,9 @@ export default function Tracker() {
                 <ActivityForm />
               </div>
             </div>
+
+            {/* Smart AI Scanner */}
+            <SmartScanner />
 
             {/* Activity History */}
             <div className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-2xl border border-gray-200/50 dark:border-gray-700/50 p-6 shadow-lg">

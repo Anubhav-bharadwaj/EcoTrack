@@ -4,7 +4,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
-import { sendChatMessage } from '../utils/offlineBot';
+import { sendChatMessage } from '../utils/agentBot';
 import { useApp } from '../store/AppContext';
 
 const QUICK_REPLIES = [

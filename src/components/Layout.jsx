@@ -22,14 +22,14 @@ const NAV_ITEMS = [
   { path: '/', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/tracker', label: 'Tracker', icon: ClipboardList },
   { path: '/simulator', label: 'Simulator', icon: Shuffle },
-  { path: '/challenges', label: 'Challenges', icon: Trophy },
+  { path: '/challenges', label: 'Reduction Goals', icon: Trophy },
 ];
 
 const PAGE_TITLES = {
   '/': 'Dashboard',
   '/tracker': 'Activity Tracker',
   '/simulator': 'What If Simulator',
-  '/challenges': 'Eco Challenges',
+  '/challenges': 'Reduction Goals',
 };
 
 export default function Layout({ children }) {
@@ -40,7 +40,7 @@ export default function Layout({ children }) {
   const currentTitle = PAGE_TITLES[location.pathname] || 'EcoTrack AI';
 
   return (
-    <div className="flex h-screen overflow-hidden bg-primary-50 dark:bg-dark-bg">
+    <div className="flex h-screen overflow-hidden dark:bg-dark-bg">
       {/* ─── Mobile Overlay ─── */}
       {sidebarOpen && (
         <div
@@ -65,14 +65,9 @@ export default function Layout({ children }) {
           <div className="flex items-center justify-center w-10 h-10 rounded-xl gradient-green shadow-lg shadow-primary-500/20">
             <Leaf className="w-5 h-5 text-white" />
           </div>
-          <div>
-            <h1 className="text-lg font-bold font-display text-primary-800 dark:text-primary-300">
-              EcoTrack
-            </h1>
-            <span className="text-xs font-medium text-primary-500 dark:text-primary-500 tracking-wider uppercase">
-              AI
-            </span>
-          </div>
+          <h1 className="text-xl font-bold font-display text-primary-800 dark:text-primary-300 tracking-tight">
+            EcoTrack
+          </h1>
 
           {/* Close button on mobile */}
           <button
@@ -139,7 +134,7 @@ export default function Layout({ children }) {
               </div>
             </div>
             <div>
-              <p className="text-xs font-medium text-gray-500 dark:text-gray-400">EcoScore</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400">Sustainability Index</p>
               <p className="text-sm font-semibold text-primary-700 dark:text-primary-300">
                 {ecoTier.emoji} {ecoTier.label}
               </p>

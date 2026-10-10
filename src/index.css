@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 /* ═══════════════════════════════════════════════════
    ECOTRACK AI — DESIGN SYSTEM THEME
@@ -7,7 +8,7 @@
 
 @theme {
   --font-sans: 'Inter', sans-serif;
-  --font-display: 'Space Grotesk', sans-serif;
+  --font-display: 'Inter', sans-serif;
 
   /* Primary Green Palette */
   --color-primary-50: #ecfdf5;
@@ -21,11 +22,11 @@
   --color-primary-800: #065f46;
   --color-primary-900: #064e3b;
 
-  /* Dark Mode Surfaces */
-  --color-dark-bg: #0a0f0d;
-  --color-dark-card: #111916;
-  --color-dark-border: #1a2f23;
-  --color-dark-surface: #0f1a14;
+  /* Dark Mode Surfaces (Slate/Zinc vibe) */
+  --color-dark-bg: #0f172a;
+  --color-dark-card: #1e293b;
+  --color-dark-border: #334155;
+  --color-dark-surface: #0f172a;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -42,14 +43,14 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f0fdf4;
-  color: #1a2e23;
+  background-color: #faf8f5;
+  color: #0f172a;
   min-height: 100vh;
 }
 
 .dark body {
-  background-color: #0a0f0d;
-  color: #d1fae5;
+  background-color: #0f172a;
+  color: #f8fafc;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -329,17 +330,15 @@ body {
 }
 
 /* ═══════════════════════════════════════════════════
-   GREEN GLOW EFFECTS (DARK MODE)
+   SUBTLE EFFECTS (DARK MODE)
    ═══════════════════════════════════════════════════ */
 
 .dark .glow-green {
-  box-shadow: 0 0 20px rgba(52, 211, 153, 0.15),
-              0 0 40px rgba(52, 211, 153, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .dark .glow-green-strong {
-  box-shadow: 0 0 20px rgba(52, 211, 153, 0.25),
-              0 0 60px rgba(52, 211, 153, 0.10);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* ═══════════════════════════════════════════════════
