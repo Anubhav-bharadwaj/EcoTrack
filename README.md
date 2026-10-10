@@ -1,5 +1,4 @@
-# 🌱 Carbon Tracker EcoAI
-
+# 🌱 EcoTrack
 An AI-powered web application that helps users calculate and track their carbon footprint while receiving personalized eco-friendly recommendations.
 
 ## 🚀 Live Demo
