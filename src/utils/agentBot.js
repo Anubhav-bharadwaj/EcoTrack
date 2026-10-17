@@ -11,12 +11,22 @@ const groq = new Groq({
  * Generates dynamic recommendations based on user's recent activities using Groq Llama 3
  */
 export async function getRecommendations(activities) {
-  if (!import.meta.env.VITE_GROQ_API_KEY) {
-    return "Welcome! Please set your VITE_GROQ_API_KEY in the .env file to unlock AI insights.";
-  }
-
   if (!activities || activities.length === 0) {
     return "Welcome to EcoTrack AI! 🌱 Start logging your daily activities to get personalized, AI-driven tips on reducing your carbon footprint.";
+  }
+
+  if (!import.meta.env.VITE_GROQ_API_KEY) {
+    // Provide a helpful, intelligent category-based sustainability tip
+    const latest = activities[activities.length - 1];
+    const cat = latest?.category || 'general';
+    if (cat === 'transport') {
+      return "Tip: Commuting via public transit or carpooling a couple of days a week can slash your travel emissions by over 30%! 🚆🚲";
+    } else if (cat === 'electricity') {
+      return "Tip: Unplugging standby electronics and switching to LED lighting can save up to 10% on your monthly household footprint! ⚡💡";
+    } else if (cat === 'food') {
+      return "Tip: Swapping a few meals each week for plant-rich alternatives significantly lowers personal dietary emissions! 🥗🌱";
+    }
+    return "You're doing great! Keep logging your activities. Consistent tracking is the first step toward lasting, sustainable habits. 🌟";
   }
 
   const prompt = `Based on these recent activities of the user, provide a very short, encouraging, and specific tip to reduce their carbon footprint (max 2 sentences). Use emojis if appropriate.\nUser Activities: ${JSON.stringify(activities)}`;

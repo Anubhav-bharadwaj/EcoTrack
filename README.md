@@ -4,7 +4,7 @@
   
   **Enterprise Sustainability Intelligence & Multilingual Voice-Enabled Carbon Accounting Platform**
 
-  [![Live Demo](https://img.shields.io/badge/demo-online-emerald.svg)](https://carbontrackerecoai.vercel.app/)
+  [![Live Demo](https://img.shields.io/badge/demo-online-emerald.svg)](https://eco-track-mu-tan.vercel.app/)
   [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
   [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-v4-38B2AC.svg)](https://tailwindcss.com/)
   [![Vite](https://img.shields.io/badge/Vite-8-purple.svg)](https://vitejs.dev/)
