@@ -1,5 +1,6 @@
 import { useState, useEffect, useMemo } from 'react';
-import { TrendingDown, Activity, Flame, Award, Sparkles, Leaf, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { TrendingDown, Activity, Flame, Award, Sparkles, Leaf, Zap, Radar, ArrowRight } from 'lucide-react';
 import { useApp } from '../store/AppContext';
 import {
   calculateCO2,
@@ -294,6 +295,38 @@ export default function Dashboard() {
                   )}
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Emissions Radar Live Map Banner */}
+        <div className={sectionClass('insight')}>
+          <div className="relative group overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 border border-emerald-500/30 p-6 sm:p-8 shadow-xl text-white">
+            <div className="absolute right-0 top-0 -mt-10 -mr-10 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative z-10">
+              <div className="space-y-2 max-w-xl">
+                <div className="flex items-center gap-2">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse shadow-sm shadow-emerald-400/50" />
+                  <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">
+                    Live Geospatial Intelligence
+                  </span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
+                  City Emissions & Pollutant Radar
+                </h3>
+                <p className="text-sm text-slate-300 leading-relaxed">
+                  Explore real-time carbon hotspots, industrial clusters, and air pollutant matrices (PM2.5, NO₂, CO) for any city worldwide with custom satellite and dark overlays.
+                </p>
+              </div>
+
+              <Link
+                to="/map"
+                className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/25 transition-all duration-200 group-hover:scale-105 shrink-0"
+              >
+                <Radar className="w-4 h-4 text-slate-950" />
+                <span>Launch Emissions Radar</span>
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         </div>

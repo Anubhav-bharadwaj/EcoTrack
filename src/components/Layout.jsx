@@ -14,12 +14,15 @@ import {
   Menu,
   X,
   Search,
+  MapPin,
+  Radar,
 } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 import { useApp } from '../store/AppContext';
 
 const NAV_ITEMS = [
   { path: '/', label: 'Dashboard', icon: LayoutDashboard },
+  { path: '/map', label: 'Emissions Radar', icon: Radar },
   { path: '/tracker', label: 'Tracker', icon: ClipboardList },
   { path: '/simulator', label: 'Simulator', icon: Shuffle },
   { path: '/challenges', label: 'Reduction Goals', icon: Trophy },
@@ -27,6 +30,7 @@ const NAV_ITEMS = [
 
 const PAGE_TITLES = {
   '/': 'Dashboard',
+  '/map': 'Emissions & Pollutant Radar',
   '/tracker': 'Activity Tracker',
   '/simulator': 'What If Simulator',
   '/challenges': 'Reduction Goals',

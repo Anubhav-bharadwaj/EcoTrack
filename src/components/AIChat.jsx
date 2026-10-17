@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Sparkles } from 'lucide-react';
 import { sendChatMessage } from '../utils/agentBot';
 import { useApp } from '../store/AppContext';
+import VoiceAgentButton from './VoiceAgentButton';
 
 const QUICK_REPLIES = [
   '💡 How to reduce my footprint?',
@@ -156,6 +157,15 @@ export default function AIChat() {
               Carbon Coach — Always here to help
             </p>
           </div>
+
+          {/* Voice Agent OS Launcher */}
+          <VoiceAgentButton
+            context={{
+              page: 'AIChat',
+              activitiesCount: state.activities?.length || 0,
+            }}
+          />
+
           <button
             onClick={() => setIsOpen(false)}
             className="p-2 rounded-xl hover:bg-primary-100 dark:hover:bg-dark-surface transition-colors"
@@ -276,6 +286,14 @@ export default function AIChat() {
                 placeholder-gray-400 dark:placeholder-gray-500
                 focus:outline-none focus:ring-2 focus:ring-primary-400/30
                 disabled:opacity-50 transition-all duration-200"
+            />
+            {/* Quick Mic Launch */}
+            <VoiceAgentButton
+              compact
+              context={{
+                page: 'AIChat',
+                activitiesCount: state.activities?.length || 0,
+              }}
             />
             <button
               onClick={() => handleSend()}

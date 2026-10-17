@@ -25,6 +25,7 @@ export async function getRecommendations(activities) {
     const completion = await groq.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
       model: "qwen/qwen3.8-27b",
+      max_tokens: 250,
       temperature: 0.7,
     });
     return completion.choices[0].message.content;
@@ -48,6 +49,7 @@ export async function getSimulatorInsight(title, savings, yearlySavings) {
     const completion = await groq.chat.completions.create({
       messages: [{ role: "user", content: prompt }],
       model: "qwen/qwen3.8-27b",
+      max_tokens: 200,
       temperature: 0.7,
     });
     return completion.choices[0].message.content;
@@ -81,11 +83,17 @@ export async function sendChatMessage(message, chatHistory = [], activities = []
 
   messages.unshift(systemPrompt);
 
+  // 3. Append the current user message
+  if (message && message.trim()) {
+    messages.push({ role: 'user', content: message.trim() });
+  }
+
   try {
-    // 3. Call the model
+    // 4. Call the model with bounded output tokens
     const response = await groq.chat.completions.create({
       model: "qwen/qwen3.8-27b",
       messages: messages,
+      max_tokens: 450,
     });
 
     return response.choices[0].message.content;
